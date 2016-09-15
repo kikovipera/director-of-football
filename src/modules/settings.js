@@ -9,6 +9,7 @@ let settings = {
     maximized: false
   },
   path: path.join(app.getPath('userData'), 'settings.json'),
+
   // Getters
   get width () {
     return settings.data.width
@@ -19,6 +20,7 @@ let settings = {
   get maximized () {
     return settings.data.maximized
   },
+
   // Functions
   load: () => {
     try {

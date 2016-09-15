@@ -10,7 +10,7 @@ const app = electron.app
 const ipc = electron.ipcMain
 
 // Custom modules
-const settings = require('./modules/settings')
+const settings = require('./src/modules/settings')
 
 // Objects
 let screen
@@ -21,13 +21,16 @@ function createScreen () {
     width: settings.width,
     height: settings.height,
     title: app.getName(),
-    show: false
+    show: false,
+    frame: true
   })
-  screen.loadURL(path.join('file://', __dirname, '/screens/splash.html'))
+  screen.loadURL(path.join('file://', __dirname, '/src/pages/splash.html'))
 
   screen.once('ready-to-show', () => {
     screen.show()
     if (settings.maximized) screen.maximize()
+    // Run scripts now window has shown
+    require('./src/scripts/menu')
   })
 
   settings.events(screen)
