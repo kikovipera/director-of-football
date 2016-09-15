@@ -23,7 +23,7 @@
   "private": true,
   "devDependencies": {
     "devtron": "^1.3.0",
-    "electron": "1.3.5",
+    "electron": "1.3.6",
     "electron-packager": "^8.0.0",
     "standard": "^8.0.0"
   }

@@ -30,17 +30,7 @@ function createScreen () {
     if (settings.maximized) screen.maximize()
   })
 
-  screen.on('resize', (e) => {
-    settings.onResize(e)
-  })
-
-  screen.on('maximize', (e) => {
-    settings.onResize(e)
-  })
-
-  screen.on('unmaximize', (e) => {
-    settings.onResize(e)
-  })
+  settings.events(screen)
 
   screen.on('close', () => {
     screen = null
@@ -64,7 +54,6 @@ process.on('uncaughtException', (err) => {
 app.on('ready', () => {
   // Load user settings file
   settings.load()
-  console.log(settings.width, settings.height)
   // Show the screen
   createScreen()
 })
@@ -81,40 +70,3 @@ app.on('window-all-closed', () => {
 ipc.on('console-log', (e, message) => {
   console.log(message)
 })
-/*
-
-  mainWindow.on('resize', windowEvent)
-  mainWindow.on('maximize', windowEvent)
-  mainWindow.on('unmaximize', windowEvent)
-
-  if (debug) {
-    mainWindow.webContents.openDevTools()
-    require('devtron')
-  }
-}
-
-function getUserSettings () {
-  let filePath = path.join(app.getPath('userData'), 'settings.json')
-  console.log('Filepath = ' + filePath)
-  try {
-    let file = fs.readFileSync(filePath, 'utf8')
-    return JSON.parse(file)
-  } catch (e) {
-    console.log('settings.json not found.')
-  }
-  return {
-    width: 1024,
-    height: 768
-  }
-}
-
-function saveUserSettings () {
-  let filePath = path.join(app.getPath('userData'), 'settings.json')
-  try {
-    fs.writeFileSync(filePath, JSON.stringify(userSettings), 'utf8')
-  } catch (e) {
-    console.log('Could not save setting.json.')
-  }
-}
-
-*/

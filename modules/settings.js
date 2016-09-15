@@ -2,76 +2,53 @@ const app = require('electron').app
 const fs = require('fs')
 const path = require('path')
 
-module.exports = {
+let settings = {
   data: {
     width: 1024,
     height: 768,
     maximized: false
   },
-
+  path: path.join(app.getPath('userData'), 'settings.json'),
+  // Getters
   get width () {
-    return module.exports.data.width
+    return settings.data.width
   },
   get height () {
-    return module.exports.data.height
+    return settings.data.height
   },
   get maximized () {
-    return module.exports.data.maximized
+    return settings.data.maximized
   },
-
-  path: path.join(app.getPath('userData'), 'settings.json'),
-
+  // Functions
   load: () => {
     try {
-      module.exports.data = JSON.parse(fs.readFileSync(module.exports.path, 'utf8'))
+      settings.data = JSON.parse(fs.readFileSync(settings.path, 'utf8'))
     } catch (e) {
-      // Simply use default data
+
     }
   },
 
   save: () => {
     try {
-      fs.writeFileSync(module.exports.path, JSON.stringify(module.exports.data), 'utf8')
+      fs.writeFileSync(settings.path, JSON.stringify(settings.data), 'utf8')
     } catch (e) {
       throw new Error(e)
     }
   },
 
-  onResize: (e) => {
-    let win = e.sender
-    module.exports.data.maximized = win.isMaximized()
-    if (module.exports.data.maximized !== true) {
-      let size = win.getSize()
-      module.exports.data.width = size[0]
-      module.exports.data.height = size[1]
+  events: (win) => {
+    let f = () => {
+      settings.data.maximized = win.isMaximized()
+      if (settings.data.maximized !== true) {
+        let size = win.getSize()
+        settings.data.width = size[0]
+        settings.data.height = size[1]
+      }
     }
+    win.on('resize', f)
+    win.on('maximize', f)
+    win.on('unmaximize', f)
   }
 }
 
-/*
-
-function getUserSettings () {
-  let filePath = path.join(app.getPath('userData'), 'settings.json')
-  console.log('Filepath = ' + filePath)
-  try {
-    let file = fs.readFileSync(filePath, 'utf8')
-    return JSON.parse(file)
-  } catch (e) {
-    console.log('settings.json not found.')
-  }
-  return {
-    width: 1024,
-    height: 768
-  }
-}
-
-function saveUserSettings () {
-  let filePath = path.join(app.getPath('userData'), 'settings.json')
-  try {
-    fs.writeFileSync(filePath, JSON.stringify(userSettings), 'utf8')
-  } catch (e) {
-    console.log('Could not save setting.json.')
-  }
-}
-
-*/
+module.exports = settings
