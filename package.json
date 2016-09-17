@@ -3,10 +3,10 @@
   "productName": "Director of Football",
   "version": "0.0.1",
   "description": "Simple project designed to learn JavaScript & Electron, while making a little football simulation.",
-  "main": "main.js",
+  "main": "app/main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "electron . --debug",
+    "start": "electron . --color",
+    "dev": "electron . --debug --color",
     "lint": "standard",
     "package-win": "electron-packager . director-of-football --platform=win32 --arch=ia32 --out=build"
   },
@@ -23,12 +23,14 @@
   "private": true,
   "devDependencies": {
     "devtron": "^1.3.0",
-    "electron": "1.3.6",
+    "electron": "^1.4.0",
     "electron-packager": "^8.0.0",
     "standard": "^8.0.0"
   },
   "dependencies": {
+    "chalk": "^1.1.3",
     "electron-log": "^1.1.1",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "pretty-bytes": "^4.0.2"
   }
 }
