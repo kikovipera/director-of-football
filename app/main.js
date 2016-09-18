@@ -17,7 +17,7 @@ function ready () {
 }
 
 function createInitialWindow () {
-  initialWindow = new BrowserWindow({width: 600, height: 500, title: app.getName(), show: false})
+  initialWindow = new BrowserWindow({width: 800, height: 600, title: app.getName(), show: false})
 
   // Window events
   initialWindow.on('ready-to-show', () => {
