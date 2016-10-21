@@ -4,7 +4,7 @@
 Small football simulation project, created in order to simply get familiar with JavaScript, Node, npm &amp; Electron.
 
 ## Running the Game from Source
-~~~~
+~~~~shell
 git clone https://github.com/varbrad/director-of-football.git
 cd director-of-football
 npm install
