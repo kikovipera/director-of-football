@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const electron = require('electron')
 
 const BrowserWindow = electron.BrowserWindow
@@ -8,7 +9,7 @@ let splashWindow
 
 function ready () {
   // Initial log messages
-  console.log(process.versions.electron)
+  console.log(chalk.green.bold('%s v%s') + chalk.black(' running ') + chalk.cyan.bold('Electron v%s'), app.getName(), app.getVersion(), process.versions.electron)
   // Create initialWindow
   createInitialWindow()
 }

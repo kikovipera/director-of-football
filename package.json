@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Simple project designed to learn JavaScript & Electron, while making a little football simulation.",
   "scripts": {
-    "start": "electron app"
+    "start": "electron app --color"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "private": true,
   "devDependencies": {
     "electron": "^1.4.4"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3"
   }
 }
