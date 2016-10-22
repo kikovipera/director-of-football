@@ -16,10 +16,10 @@ function ready () {
 }
 
 function createWindow () {
-  win = new BrowserWindow({width: 1600, height: 850, title: app.getName(), show: false, frame: false, backgroundColor: '#57d5af'})
+  win = new BrowserWindow({width: 1600, minWidth: 400, height: 850, minHeight: 400, title: app.getName(), show: false, frame: false, backgroundColor: '#57d5af'})
 
   // Window events
-  win.on('ready-to-show', () => {
+  win.once('ready-to-show', () => {
     win.show()
   })
   win.on('closed', () => {

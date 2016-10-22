@@ -2,7 +2,12 @@
 /* eslint-disable no-unused-vars */
 Vue.config.devtools = false
 
-require('./js/core')
+const electron = require('electron')
+
+const app = electron.remote.app
+const win = electron.remote.getCurrentWindow()
+const dialog = electron.remote.dialog
+
 require('./js/titlebar')
 require('./js/sidebar')
 require('./js/view')
