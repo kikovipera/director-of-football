@@ -1,31 +1,32 @@
 const chalk = require('chalk')
 const electron = require('electron')
+// const argv = require('yargs').argv
 
 const BrowserWindow = electron.BrowserWindow
 
 const app = electron.app
 
-let splashWindow
+var win
 
 function ready () {
   // Initial log messages
   console.log(chalk.green.bold('%s v%s') + chalk.black(' running ') + chalk.cyan.bold('Electron v%s'), app.getName(), app.getVersion(), process.versions.electron)
   // Create initialWindow
-  createInitialWindow()
+  createWindow()
 }
 
-function createInitialWindow () {
-  splashWindow = new BrowserWindow({width: 800, height: 600, title: app.getName(), show: false})
+function createWindow () {
+  win = new BrowserWindow({width: 1600, height: 850, title: app.getName(), show: false, frame: false, backgroundColor: '#57d5af'})
 
   // Window events
-  splashWindow.on('ready-to-show', () => {
-    splashWindow.show()
+  win.on('ready-to-show', () => {
+    win.show()
   })
-  splashWindow.on('closed', () => {
-    splashWindow = null
+  win.on('closed', () => {
+    win = null
   })
 
-  splashWindow.loadURL('file://' + __dirname + '/windows/splash/splash.html')
+  win.loadURL('file://' + __dirname + '/window/index.html')
 }
 
 app.on('ready', ready)

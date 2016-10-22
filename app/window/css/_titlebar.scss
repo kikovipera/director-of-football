@@ -1,0 +1,42 @@
+> #app-titlebar {
+  -webkit-app-region: drag;
+
+  display: flex;
+  flex-direction: row;
+
+  background-color: darken($primary-color, 10%);
+
+  > h1 {
+    display: inline-block;
+    color: white;
+
+    padding: .2rem;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    flex: 1;
+  }
+
+  > button {
+    -webkit-app-region: no-drag;
+
+    width: 2.5rem;
+
+    background-color: transparent;
+    color: white;
+
+    outline: none;
+    border: none;
+
+    &:hover {
+      background-color: lighten($primary-color, 15%);
+      color: darken($primary-color, 25%);
+    }
+
+    &.quit:hover {
+      background-color: #b42539;
+      color: white;
+    }
+  }
+}

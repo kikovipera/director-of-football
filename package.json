@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "description": "Simple project designed to learn JavaScript & Electron, while making a little football simulation.",
   "scripts": {
-    "start": "electron app --color"
+    "start": "electron app --color",
+    "pack-renderer": "webpack app/window/renderer.js app/window/renderer.bundle.js --optimize-minimize"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,11 @@
   "homepage": "https://github.com/varbrad/director-of-football#readme",
   "private": true,
   "devDependencies": {
-    "electron": "^1.4.4"
+    "electron": "^1.4.4",
+    "webpack": "^1.13.2"
   },
   "dependencies": {
-    "chalk": "^1.1.3"
+    "chalk": "^1.1.3",
+    "yargs": "^6.3.0"
   }
 }

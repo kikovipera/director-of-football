@@ -1,0 +1,9 @@
+> #app-sidebar {
+  transition: all .3s ease-out;
+  width: 1rem;
+  background-color: lighten($primary-color, 5%);
+
+  &:hover {
+    width: 2rem;
+  }
+}
