@@ -26,6 +26,10 @@ function createWindow () {
     win = null
   })
 
+  win.on('close', (e) => {
+    // Handle somebody trying to close the window
+  })
+
   win.loadURL('file://' + __dirname + '/window/index.html')
 }
 

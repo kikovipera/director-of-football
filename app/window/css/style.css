@@ -130,7 +130,7 @@ body {
 }
 
 #app > #app-debug > button {
-  padding: .2rem;
+  padding: .2rem .6rem;
   margin-left: .2rem;
   height: 100%;
   font-size: .7rem;
@@ -145,8 +145,4 @@ body {
 #app > #app-debug > button:hover {
   background-color: rgba(255, 255, 255, 0.8);
   color: rgba(0, 0, 0, 0.8);
-}
-
-#app > #app-debug:hover {
-  height: 3rem;
 }

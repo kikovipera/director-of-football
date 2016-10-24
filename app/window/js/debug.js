@@ -6,9 +6,9 @@
 
   var template = `
   <div id="app-debug">
-    <button @click="toggleDevTools">Toggle DevTools <i class="fa fa-terminal"></i></button>
-    <button @click="reload">Reload <i class="fa fa-refresh"></i></button>
-    <button @click="restart">Restart <i class="fa fa-repeat"></i></button>
+    <button @click="toggleDevTools" title="Toggle DevTools"><i class="fa fa-terminal"></i></button>
+    <button @click="reload" title="Reload"><i class="fa fa-refresh"></i></button>
+    <button @click="restart" title="Restart"><i class="fa fa-repeat"></i></button>
   </div>
   `
 

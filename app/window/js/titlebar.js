@@ -2,6 +2,7 @@
 (function () {
   const electron = require('electron')
 
+  const app = electron.remote.app
   const win = electron.remote.getCurrentWindow()
 
   var template = `
@@ -36,7 +37,7 @@
         }
       },
       quit: function () {
-        win.close()
+        app.quit()
       }
     }
   })
